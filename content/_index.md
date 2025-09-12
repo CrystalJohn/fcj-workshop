@@ -5,23 +5,20 @@ weight: 1
 chapter: false
 ---
 
-    
 # Internship Report
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Van A
 
-&emsp; **Phone Number:** 0989888999 
+&emsp; **Full Name:** Trần Phan Thanh Phúc
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Phone Number:** 0944941764
 
-&emsp; **University:** Ho Chi Minh City University of Technology and Education
+&emsp; **Email:** phuctptse183992@fpt.edu.vn
 
-&emsp; **Major:** Information Technology
+&emsp; **University:** FPT University HCM
+
+&emsp; **Major:** Software Engineer
 
 &emsp; **Class:** AWS082025
 
