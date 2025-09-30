@@ -5,53 +5,48 @@ weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 4 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Deploy applications on Linux Instance
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task                                                                                                                                                                                                         | Start Date | Completion Date | Reference Material                        |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
+| 2   | - Basic knowledge of virtual servers with Amazon Elastic Compute Cloud (EC2) + Clean resource                                                                                                                | 29/09/2025 | 29/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Go to office <br>&emsp; - **Practice:** <br>&emsp; + Basic Amazon EC2 <br>&emsp; + Create snapshot <br>&emsp; + Build AMI optional <br>&emsp; + Access when keypair is lost<br>&emsp; + Install phpMyAdmin | 30/09/2025 | 30/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI       | 13/08/2025 | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP <br>                                    | 14/08/2025 | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - **Practice:** <br>&emsp; + Launch EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach EBS volume                                                                                                 | 15/08/2025 | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 4 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+- Understood the types of EC2 instance types to choose suitable for workload, helping optimize development costs and performance
 
-* Successfully created and configured an AWS Free Tier account.
+  - Use T-series instances for light workloads, low CPU demand.
+  - Use M-series instances for balanced workloads between CPU, memory, and network.
+  - Use R-series instances for workloads requiring lots of memory.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+- Configure inbound rules in SG:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+  - SSH, port 22 for connection via PuTTY or SSH client
+  - All ICMP-IPv4 to allow ping and ICMP error messages
+  - All ICMP-IPv6 to allow ping and ICMP error messages over IPv6
+  - HTTP, port 80 for unsecured web access
+  - HTTPS, port 443 for secured web access
+  - MySQL/Aurora, port 3306 for MySQL Database
+  - Custom TCP, port 5000 to run Node.js application
 
-* Used AWS CLI to perform basic operations such as:
+- Successfully created and configured VPC Linux and VPC Windows.
+- Created and received Windows keypair to secure EC2 instance connection via RDP (Remote Desktop Protocol) on port 3389
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+- Connect to Amazon Linux 2 using MobaXterm:
+- Change EC2 Instance Type configuration: from t2.micro to t3.micro
+- Successfully performed EC2 snapshot. Backed up data before changing configuration. -> including data backup + EBS volume state
+- Installed LAMP stack (Linux, Apache, MySQL, PHP) on Amazon Linux 2
+  - Configured and used phpMyAdmin to manage database
+  - Installed Node.js Runtime Environment
+  - Deployed and ran AWS User Management application
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Link do-result lab: https://drive.google.com/drive/folders/1VMVLJbZfOHvjrRfTbkcXPtq55aznfbDZ?usp=sharing

@@ -5,55 +5,49 @@ weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Triển khai ứng dụng trên Linux Instance
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc                                                                                                                                                                                                    | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | --------------- | ----------------------------------------- |
+| 2   | - Kiến thức cơ bản về máy chủ ảo với Amazon Elastic Compute Cloud (EC2) + Clean resource                                                                                                                     | 29/09/2025   | 29/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Lên văn phòng <br>&emsp; - **Thực hành:** <br>&emsp; + Amazon EC2 cơ bản <br>&emsp; + Tạo snapshot <br>&emsp; + Xây dựng AMI optional <br>&emsp; + Truy cập khi mất keypair<br>&emsp; + Cài đặt phpMyAdmin | 30/09/2025   | 30/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI                  | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP <br>                                     | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                                          | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+- Hiểu được các loại EC2 instance types để lựa chọn phù hợp với workload, giúp tôi tối ưu chi phí phát triển và hiệu suất
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+  - Sử dụng instance dòng T cho workload nhẹ, như cầu CPU thấp.
+  - Sử dụng instance dòng M cho workload cân bằng giữa CPU, bộ nhớ và mạng.
+  - Sử dụng instance dòng R cho workload cần nhiều bộ nhớ.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+- Cấu hình inbound rules trong SG:
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+  - SSH, cổng 22 để kết nối qua PuTTY hoặc SSH client
+  - All ICMP-IPv4 cho phép ping và các thông báo lỗi ICMP
+  - All ICMP-IPv6 cho phép ping và các thông báo lỗi qua IPv6
+  - HTTP, cổng 80 cho truy cập web không bảo mật
+  - HTTPS, cổng 443 cho truy cập web bảo mật
+  - MySQL/Aurora, cổng 3306 sử dụng cho Database MySQL
+  - Custom TCP, cổng 5000 để chạy ứng dụng Node.js
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+- Đã tạo và cấu hình VPC Linux và VPC Windows thành công.
+- Tạo và nhận keypair windows để bảo mật kết nối EC2 instance thông qua RDP (Remote Desktop Protocol) qua port 3389
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+1gqFSE53bGQJJKeE@)u;Hsi7xOphbTqv
+mật khẩu root để sử dụng cấu hình Database cho Nodejs app: 123Admin
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Kết nối Amazon Linux 2 bằng MobaXterm:
+- Thay đổi cấu hình EC2 Instance Type: từ t2.micro sang t3.micro
+- Thực hiện EC2 snapshot thành công. Đã snapshot(backup) lại dữ liệu trước khi thay đổi cấu hình. -> bao gồm backup dữ liệu + trạng thái EBS volume
+- Cài đặt LAMP stack (Linux, Apache, MySQL, PHP) trên Amazon Linux 2
+  - Cấu hình và sử dụng phpMyAdmin để quản lý cơ sở dữ liệu
+  - Cài đặt Node.js Runtime Environment
+  - Triển khai và chạy ứng dụng AWS User Management
