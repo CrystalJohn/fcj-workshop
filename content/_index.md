@@ -31,10 +31,10 @@ chapter: false
 
 ### Report Contents
 
-1.  [Worklog](1-Worklog/)
-2.  [Proposal](2-Proposal/)
-3.  [Translated Blogs](3-BlogsTranslated/)
-4.  [Participated Events](4-EventParticipated/)
-5.  [Workshop](5-Workshop/)
-6.  [Self-evaluation](6-Self-evaluation/)
-7.  [Feedback](7-Feedback/)
+1.  [Worklog](1-worklog/)
+2.  [Proposal](2-proposal/)
+3.  [Translated Blogs](3-blogsTranslated/)
+4.  [Participated Events](4-eventParticipated/)
+5.  [Workshop](5-workshop/)
+6.  [Self-evaluation](6-self-evaluation/)
+7.  [Feedback](7-feedback/)

@@ -6,15 +6,18 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-A worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
+<!-- **In this page**, you will need to introduce your worklog **how**? You complete the program in **how many weeks**? What **have you done** in those weeks? -->
 
-**Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
 
-**Week 2:** [Doing task A...](1.2-week2/)
+<!-- Usually and also standard, a worklog is done in about 3 months (throughout the internship period) with the content of the weeks as follows: -->
 
-**Week 3:** [Doing task B...](1.3-week3/)
+**Week 1:** [Getting familiar with AWS and basic services in AWS](1.1-week1/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 2:** [Getting familiar with AWS VPC and practicing labs](1.2-week2/)
+
+**Week 3:** [Deploying and configuring EC2 instances in VPC Public/Private Subnets and Deploying Node.js application on Amazon Linux](1.3-week3/)
+
+**Week 4:** [Deploying applications on Linux Instance](1.4-week4/)
 
 **Week 5:** [Doing task D...](1.5-week5/)
 

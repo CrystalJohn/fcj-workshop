@@ -5,51 +5,66 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
-
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+# Academic Research Chatbot
+## Giải pháp AWS RAG-based hỗ trợ học thuật và nghiên cứu học tập thông minh  
 
 ### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+Academic Research Chatbot được thiết kế dành cho sinh viên, giảng viên, và nhóm nghiên cứu học thuật tại các trường đại học như FPT University, với mục tiêu hỗ trợ việc học, ôn tập và nghiên cứu khoa học bằng hội thoại thông minh. Nền tảng cho phép người dùng tải lên tài liệu học thuật (PDF, DOCX, giáo trình, bài báo nghiên cứu, bài giảng, v.v.) và sử dụng trí tuệ nhân tạo (AI) để tìm kiếm, tóm tắt, so sánh, và trích dẫn nội dung theo ngữ cảnh học thuật.
+
+Hệ thống ứng dụng mô hình Retrieval-Augmented Generation (RAG) kết hợp giữa Amazon Bedrock, Amazon Kendra, và Amazon Textract để phân tích và hiểu tài liệu. Giao diện người dùng được xây dựng bằng React (Next.js), lưu trữ trên Amazon S3 và phân phối qua Amazon CloudFront, đảm bảo trải nghiệm mượt mà, nhanh chóng, và bảo mật với Amazon Cognito.
+
+Nền tảng hoạt động hoàn toàn theo kiến trúc Serverless trên AWS, dễ mở rộng, chi phí thấp, phù hợp với quy mô sử dụng nội bộ tại các lab học thuật. Trong tương lai, hệ thống có thể mở rộng thành trợ lý học tập thông minh đa ngôn ngữ, hỗ trợ tiếng Anh học thuật (Academic English) hoặc các môn chuyên ngành như Data Structures & Algorithms, Software Engineering, hoặc Database Systems.
 
 ### 2. Tuyên bố vấn đề  
 *Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+Các nền tảng hỗ trợ học tập hiện nay (như ChatGPT, Perplexity, hoặc NotebookLM) tuy mang lại trải nghiệm học tập hiện đại và dễ sử dụng, nhưng đa phần hoạt động trong môi trường đóng, không thể tùy chỉnh theo chương trình học hoặc tích hợp sâu với hệ thống nội bộ của trường.
+Điều này khiến các tổ chức giáo dục khó quản lý dữ liệu, kiểm soát nội dung học thuật, hoặc mở rộng tính năng theo nhu cầu riêng.
 
 *Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+Academic Research Chatbot sử dụng công nghệ AWS Serverless kết hợp Generative AI để tạo ra một hệ thống hội thoại học thuật thông minh.
+Người dùng chỉ cần tải lên tài liệu học thuật, hệ thống sẽ:
+
+1. Tự động trích xuất nội dung (Amazon Textract).
+
+2. Lưu trữ và lập chỉ mục ngữ nghĩa (Amazon Kendra / OpenSearch).
+
+3. Tìm kiếm đoạn nội dung liên quan (Retrieval) và sinh phản hồi học thuật (Generation) bằng mô hình Claude 3.5 Sonnet trên Amazon Bedrock.
+
+Giải pháp cho phép sinh viên đặt câu hỏi trực tiếp liên quan đến tài liệu học, nhận được câu trả lời có trích dẫn, tóm tắt hoặc ví dụ minh họa. Giảng viên có thể theo dõi dashboard phân tích (Amazon QuickSight) để nắm bắt các chủ đề được hỏi nhiều nhất, giúp cải thiện nội dung giảng dạy.
 
 *Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+Giải pháp giúp sinh viên tiết kiệm 40–60% thời gian ôn tập và nghiên cứu, đồng thời cung cấp công cụ tự học hiện đại cho nhà trường mà chi phí vận hành dưới 1 USD/tháng nhờ kiến trúc serverless.  
+Ngoài ra, nền tảng tạo tiền đề cho việc mở rộng sang các lĩnh vực nghiên cứu khác như phân tích ngôn ngữ học, tổng hợp báo cáo khoa học, hoặc xây dựng học liệu số (digital learning repository).  
+Thời gian hoàn vốn dự kiến 3–6 tháng thông qua giảm chi phí nhân lực hướng dẫn và tăng hiệu quả tự học của sinh viên.  
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+### 3. Kiến trúc giải pháp
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+Academic Research Chatbot áp dụng mô hình AWS RAG-based Serverless Architecture, cho phép hệ thống mở rộng linh hoạt, đảm bảo hiệu suất cao và chi phí thấp.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+Luồng xử lý dữ liệu và hội thoại
+<br>[Sơ đồ kiến trúc] <br>
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+ *Dịch vụ AWS sử dụng*
+- Amazon Textract: Tách text từ file PDF/DOCX.
+- Amazon Kendra / OpenSearch: Tạo chỉ mục ngữ nghĩa để tìm đoạn liên quan.
+- Amazon Bedrock (Claude 3.5 Sonnet): Sinh phản hồi học thuật theo ngữ cảnh.
+- AWS Lambda: Xử lý backend, orchestrate RAG pipeline.
+- Amazon S3: Lưu trữ file người dùng và dữ liệu trích xuất.
+- Amazon API Gateway: Cổng kết nối giữa UI và backend.
+- Amazon Cognito: Xác thực người dùng theo vai trò.
+- Amazon QuickSight: Phân tích dữ liệu và tạo dashboard cho giảng viên.
+- Amazon CloudWatch: Theo dõi hiệu suất, log và cảnh báo lỗi.
+
+*Thiết kế thành phần*
+
+- Người dùng: Sinh viên, giảng viên, và nhà nghiên cứu.
+- Xử lý tài liệu: PDF/DOCX được upload lên S3 và xử lý bởi Textract.
+- Lập chỉ mục: Kendra/OpenSearch phân tích và tạo embedding vector.
+- Hội thoại AI: Bedrock (Claude 3.5 Sonnet) sử dụng RAG để sinh câu trả lời.
+- Quản lý người dùng: Cognito xác thực và phân quyền truy cập.
+- Phân tích dữ liệu: QuickSight tổng hợp hành vi học tập và tài liệu phổ biến.  
 
 ### 4. Triển khai kỹ thuật  
 *Các giai đoạn triển khai*  

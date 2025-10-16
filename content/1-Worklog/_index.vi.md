@@ -15,9 +15,9 @@ pre: " <b> 1. </b> "
 
 **Tuần 2:** [Làm quen với AWS VPC và thực hành lab](1.2-week2/)
 
-**Tuần 3:** [Làm công việc B...](1.3-week3/)
+**Tuần 3:** [Triển khai và cấu hình EC2 instance trong VPC Public/Private Subnet và Triển khai ứng dụng Node.js trên Amazon Linux](1.3-week3/)
 
-**Tuần 4:** [Làm công việc C...](1.4-week4/)
+**Tuần 4:** [Triển khai ứng dụng trên Linux Instance](1.4-week4/)
 
 **Tuần 5:** [Làm công việc D...](1.5-week5/)
 

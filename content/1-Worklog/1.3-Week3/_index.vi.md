@@ -20,7 +20,7 @@ pre: " <b> 1.3. </b> "
 | 3   | - **Thực hành** <br>&emsp; + Triển khai Hạ tầng EC2 Production-Ready + <br>&emsp; + Cách kết nối với EC2 Private qua bostion | 23/09/2025   | 23/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | 4   | - Thiết lập AWS Systems Manager Session Manager và CloudWatch Monitoring & Alerting cho tài nguyên VPC                       | 24/09/2025   | 24/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | 5   | - **Thực hành** <br>&emsp; + Cấu hình Site to Site VPN                                                                       | 25/09/2025   | 25/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - cấu hình Virtual Private Gateway (VGW) và Customer Gateway (CGW).                                                                                                                           | 26/09/2025   | 26/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - cấu hình Virtual Private Gateway (VGW) và Customer Gateway (CGW).                                                          | 26/09/2025   | 26/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 3:
 

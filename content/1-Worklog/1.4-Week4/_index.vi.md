@@ -18,7 +18,7 @@ pre: " <b> 1.4. </b> "
 | 3   | - Lên văn phòng <br>&emsp; - **Thực hành:** <br>&emsp; + Amazon EC2 cơ bản <br>&emsp; + Tạo snapshot <br>&emsp; + Xây dựng AMI optional <br>&emsp; + Truy cập khi mất keypair<br>&emsp; + Cài đặt phpMyAdmin | 30/09/2025   | 30/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | 4   | - Tìm hiểu về AWS Cloud9 <br> - Chuẩn bị với Amazon S3                                                                                                                                                       | 01/10/2025   | 01/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | 5   | - **Thực hành** <br>&emsp; + Tạo S3 và thiết lập hosting static web                                                                                                                                          | 02/10/2025   | 02/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                                          | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                                          | 03/10/2025   | 03/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 4:
 
