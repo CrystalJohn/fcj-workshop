@@ -5,24 +5,20 @@ weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
 
 ### Week 7 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Get familiar with SageMaker Studio and practice workshop
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 20/10/2025 | 20/10/2025      |
+| 3   | - Learn how to set up with Amazon Bedrock APIs                                                                                                                  | 21/10/2025 | 21/10/2025      | <https://github.com/aws-samples/amazon-bedrock-samples/tree/main/introduction-to-bedrock/bedrock_apis> |
+| 4   | - Create SageMaker domain to test Amazon Bedrock in SageMaker <br> - Set up Bedrock and prompt with Claude 3.5 Sonnet model <br> - How to work with Amazon Bedrock APIs                               | 22/10/2025 | 22/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - **Practice:** <br>&emsp; Bedrock Setup <br>&emsp; Claude 3.5 Sonnet <br>&emsp; Basic Invoke <br>&emsp; Batch Processing <br>&emsp; Prompt Engineering <br>&emsp; Rate Limit Handling                | 23/10/2025 | 23/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - **Learned concepts:** <br>&emsp; Amazon Simple Queue Service (Amazon SQS) <br>&emsp; Amazon Simple Notification Service (SNS) <br>&emsp; AWS Organizations <br>&emsp; Amazon Macie <br>&emsp; AWS Direct Connect | 24/10/2025 | 24/10/2025      | <https://skillbuilder.aws/learn/94T2BEN85A/aws-cloud-practitioner-essentials/> |
 
 
 ### Week 7 Achievements:
