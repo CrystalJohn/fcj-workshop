@@ -10,114 +10,208 @@ pre: " <b> 2. </b> "
 ## Giải pháp AWS RAG-based hỗ trợ học thuật và nghiên cứu học tập thông minh  
 
 ### 1. Tóm tắt điều hành  
-Academic Research Chatbot được thiết kế dành cho sinh viên, giảng viên, và nhóm nghiên cứu học thuật tại các trường đại học như FPT University, với mục tiêu hỗ trợ việc học, ôn tập và nghiên cứu khoa học bằng hội thoại thông minh. Nền tảng cho phép người dùng tải lên tài liệu học thuật (PDF, DOCX, giáo trình, bài báo nghiên cứu, bài giảng, v.v.) và sử dụng trí tuệ nhân tạo (AI) để tìm kiếm, tóm tắt, so sánh, và trích dẫn nội dung theo ngữ cảnh học thuật.
+**Academic Research Chatbot** là trợ lý AI hỗ trợ nghiên cứu học thuật, giúp sinh viên và giảng viên tra cứu, tóm tắt và phân tích tài liệu khoa học (PDF, bài báo) thông qua hội thoại tự nhiên có trích dẫn nguồn chính xác.
 
-Hệ thống ứng dụng mô hình Retrieval-Augmented Generation (RAG) kết hợp giữa Amazon Bedrock, Amazon Kendra, và Amazon Textract để phân tích và hiểu tài liệu. Giao diện người dùng được xây dựng bằng React (Next.js), lưu trữ trên Amazon S3 và phân phối qua Amazon CloudFront, đảm bảo trải nghiệm mượt mà, nhanh chóng, và bảo mật với Amazon Cognito.
-
-Nền tảng hoạt động hoàn toàn theo kiến trúc Serverless trên AWS, dễ mở rộng, chi phí thấp, phù hợp với quy mô sử dụng nội bộ tại các lab học thuật. Trong tương lai, hệ thống có thể mở rộng thành trợ lý học tập thông minh đa ngôn ngữ, hỗ trợ tiếng Anh học thuật (Academic English) hoặc các môn chuyên ngành như Data Structures & Algorithms, Software Engineering, hoặc Database Systems.
+**Điểm nổi bật của giải pháp:**
+- **Công nghệ lõi**: Kết hợp **IDP** (Amazon Textract) để xử lý tài liệu (kể cả bản scan) và **RAG** (Amazon Bedrock - Claude 3.5 Sonnet) để sinh câu trả lời thông minh.
+- **Kiến trúc tối ưu**: Mô hình Hybrid sử dụng 1 EC2 t3.small kết hợp các dịch vụ Serverless (Amplify, Cognito, S3, DynamoDB) để cân bằng hiệu năng và chi phí.
+- **Tính khả thi**: Phục vụ ~50 người dùng nội bộ với chi phí vận hành **~60 USD/tháng**, thời gian triển khai nhanh (20 ngày) và tận dụng tối đa AWS Free Tier.
 
 ### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các nền tảng hỗ trợ học tập hiện nay (như ChatGPT, Perplexity, hoặc NotebookLM) tuy mang lại trải nghiệm học tập hiện đại và dễ sử dụng, nhưng đa phần hoạt động trong môi trường đóng, không thể tùy chỉnh theo chương trình học hoặc tích hợp sâu với hệ thống nội bộ của trường.
-Điều này khiến các tổ chức giáo dục khó quản lý dữ liệu, kiểm soát nội dung học thuật, hoặc mở rộng tính năng theo nhu cầu riêng.
 
-*Giải pháp*  
-Academic Research Chatbot sử dụng công nghệ AWS Serverless kết hợp Generative AI để tạo ra một hệ thống hội thoại học thuật thông minh.
-Người dùng chỉ cần tải lên tài liệu học thuật, hệ thống sẽ:
+#### Vấn đề hiện tại
+Sinh viên và researcher phải làm việc với số lượng lớn tài liệu học thuật (paper hội nghị, journal, luận văn, báo cáo kỹ thuật). Nhiều tài liệu là scan PDF cũ (trước năm 2000), không có text layer, khiến việc tìm kiếm nội dung, số liệu, bảng biểu rất tốn thời gian.
 
-1. Tự động trích xuất nội dung (Amazon Textract).
+Các công cụ AI công cộng (ChatGPT, Perplexity, NotebookLM, v.v.) không được kết nối trực tiếp với kho tài liệu nội bộ của trường/khoa, khó đảm bảo bảo mật và quyền truy cập theo môn học hoặc nhóm nghiên cứu.
 
-2. Lưu trữ và lập chỉ mục ngữ nghĩa (Amazon Kendra / OpenSearch).
+Hạ tầng hiện tại không có một điểm truy cập thống nhất để:
+- Quản lý tài liệu nghiên cứu theo bộ môn/đề tài.
+- Cho phép researcher đặt câu hỏi trực tiếp trên chính các paper của mình.
+- Đảm bảo câu trả lời có trích dẫn rõ ràng (paper, trang, bảng, mục).
 
-3. Tìm kiếm đoạn nội dung liên quan (Retrieval) và sinh phản hồi học thuật (Generation) bằng mô hình Claude 3.5 Sonnet trên Amazon Bedrock.
+**Hệ quả:** nghiên cứu viên phải đọc thủ công, note tay, copy số liệu từ nhiều paper; giảng viên khó tổng hợp nhanh thông tin khi chuẩn bị bài giảng hoặc đề tài; dữ liệu học thuật phân tán trên nhiều máy cá nhân, khó chuẩn hóa và tái sử dụng.
 
-Giải pháp cho phép sinh viên đặt câu hỏi trực tiếp liên quan đến tài liệu học, nhận được câu trả lời có trích dẫn, tóm tắt hoặc ví dụ minh họa. Giảng viên có thể theo dõi dashboard phân tích (Amazon QuickSight) để nắm bắt các chủ đề được hỏi nhiều nhất, giúp cải thiện nội dung giảng dạy.
+#### Giải pháp
+**Academic Research Chatbot** đề xuất xây dựng một nền tảng hỏi – đáp học thuật nội bộ dựa trên AWS, nơi:
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp giúp sinh viên tiết kiệm 40–60% thời gian ôn tập và nghiên cứu, đồng thời cung cấp công cụ tự học hiện đại cho nhà trường mà chi phí vận hành dưới 1 USD/tháng nhờ kiến trúc serverless.  
-Ngoài ra, nền tảng tạo tiền đề cho việc mở rộng sang các lĩnh vực nghiên cứu khác như phân tích ngôn ngữ học, tổng hợp báo cáo khoa học, hoặc xây dựng học liệu số (digital learning repository).  
-Thời gian hoàn vốn dự kiến 3–6 tháng thông qua giảm chi phí nhân lực hướng dẫn và tăng hiệu quả tự học của sinh viên.  
+1.  **Dev/Admin nạp kho tài liệu nghiên cứu:**
+    -   Upload PDF vào **Amazon S3**, metadata được lưu trong **Amazon DynamoDB**.
+    -   Một EC2 worker tiêu thụ hàng đợi **Amazon SQS**, gọi **Amazon Textract** để OCR, trích xuất text, bảng, biểu mẫu, kể cả tài liệu scan.
+    -   Worker chuẩn hóa/chunk nội dung, gửi sang **Amazon Bedrock Titan Text Embeddings v2** để sinh embedding, và index vào **Qdrant** trên EC2.
 
+2.  **Researchers đặt câu hỏi qua giao diện web (Amplify + CloudFront):**
+    -   Câu hỏi được embed, truy vấn Qdrant để lấy các đoạn liên quan nhất (Retrieval).
+    -   Các đoạn này được chuyển vào **Claude 3.5 Sonnet** trên **Amazon Bedrock** để sinh câu trả lời có citation chính xác (paper, page, section, table) và giải thích theo ngữ cảnh học thuật.
+
+Toàn bộ truy cập được bảo vệ bởi **Amazon Cognito** (phân quyền researcher vs admin), log & metric được giám sát qua **Amazon CloudWatch + SNS** (cảnh báo khi có lỗi worker, queue backlog, CPU EC2 cao).
+
+#### Lợi ích và hoàn vốn đầu tư (ROI)
+
+**Hiệu quả học thuật:**
+-   Giảm 40–60% thời gian researcher phải bỏ ra để tìm số liệu, F1-score, p-value, sample size, thiết bị thí nghiệm hoặc mô tả phương pháp từ nhiều paper khác nhau.
+-   Giảm sai sót khi trích dẫn do quên trang/bảng, vì chatbot luôn trả kèm nguồn và vị trí.
+
+**Quản lý tri thức nội bộ:**
+-   Tài liệu nghiên cứu được tập trung về một kho S3 + DynamoDB, dễ backup, phân quyền, và mở rộng.
+-   Có thể tái sử dụng cho nhiều khoá học, đề tài và lab khác nhau mà không phải xây hệ thống mới.
+
+**Chi phí hạ tầng thấp & dễ kiểm soát:**
+-   Mô hình hybrid 1 EC2 + managed AI services giúp chi phí vận hành cho 50 users nội bộ giữ ở mức khoảng < 50 USD/tháng, chủ yếu trả cho EC2, 2–3 VPC endpoint interface và phần sử dụng Bedrock/Textract.
+-   Hệ thống được thiết kế để triển khai trong khoảng 20 ngày bởi team 4 người, phù hợp làm dự án nghiên cứu/thực tập nhưng vẫn có chất lượng kiến trúc sản phẩm.
+
+**Giá trị dài hạn:**
+-   Tạo nền tảng để sau này tích hợp thêm dashboard phân tích hành vi học tập, module recommend paper, hoặc mở rộng sang trợ lý học tập đa ngôn ngữ và đa lĩnh vực.
 ### 3. Kiến trúc giải pháp
 
-Academic Research Chatbot áp dụng mô hình AWS RAG-based Serverless Architecture, cho phép hệ thống mở rộng linh hoạt, đảm bảo hiệu suất cao và chi phí thấp.
+Academic Research Chatbot áp dụng mô hình AWS Hybrid RAG Architecture với IDP (Intelligent Document Processing), kết hợp một EC2 duy nhất (FastAPI + Qdrant + Worker) với các dịch vụ AI managed (Textract, Bedrock) để vừa tối ưu chi phí, vừa đảm bảo hiệu năng cho khoảng 50 người dùng nội bộ.
 
 Luồng xử lý dữ liệu và hội thoại
-<br>[Sơ đồ kiến trúc] <br>
+<br>
+
+![Sơ đồ kiến trúc](/images/2-Proposal/FCJ-MVP-architecture.png)
+
+<br>
 
 
- *Dịch vụ AWS sử dụng*
-- Amazon Textract: Tách text từ file PDF/DOCX.
-- Amazon Kendra / OpenSearch: Tạo chỉ mục ngữ nghĩa để tìm đoạn liên quan.
-- Amazon Bedrock (Claude 3.5 Sonnet): Sinh phản hồi học thuật theo ngữ cảnh.
-- AWS Lambda: Xử lý backend, orchestrate RAG pipeline.
-- Amazon S3: Lưu trữ file người dùng và dữ liệu trích xuất.
-- Amazon API Gateway: Cổng kết nối giữa UI và backend.
-- Amazon Cognito: Xác thực người dùng theo vai trò.
-- Amazon QuickSight: Phân tích dữ liệu và tạo dashboard cho giảng viên.
-- Amazon CloudWatch: Theo dõi hiệu suất, log và cảnh báo lỗi.
+#### Dịch vụ AWS sử dụng
 
-*Thiết kế thành phần*
+-   **Amazon Route 53**: Quản lý DNS cho domain nền tảng chatbot.
+-   **Amazon CloudFront**: CDN phân phối giao diện web (chat + admin) với độ trễ thấp.
+-   **AWS Amplify Hosting**: Host ứng dụng web (React/Next) cho Researchers và Dev/Admin.
+-   **Amazon Cognito**: Xác thực người dùng, phân quyền researcher vs admin.
+-   **Amazon S3**: Lưu trữ file PDF gốc do Dev/Admin upload (raw documents).
+-   **Amazon SQS (doc_ingestion_queue)**: Hàng đợi job xử lý tài liệu.
+-   **Amazon Textract**: IDP/OCR cho PDF scan và digital PDF.
+-   **Amazon Bedrock**:
+    -   **Titan Text Embeddings v2**: Sinh embedding vector cho các chunk văn bản.
+    -   **Claude 3.5 Sonnet**: Sinh câu trả lời học thuật từ context + câu hỏi người dùng (RAG).
+-   **Amazon DynamoDB**: Bảng Documents: metadata tài liệu, trạng thái pipeline (UPLOADED, IDP_RUNNING, EMBEDDING_DONE, FAILED).
+-   **Amazon EC2 (t3.small, private subnet)**:
+    -   Chạy FastAPI backend (REST API cho chat và admin).
+    -   Chạy Qdrant Vector DB để lưu và truy vấn embedding.
+    -   Chạy Worker process tiêu thụ SQS, gọi Textract + Titan, index vào Qdrant, cập nhật DynamoDB.
+-   **VPC + ALB + VPC Endpoints**:
+    -   VPC + private subnet cho EC2 (không lộ trực tiếp ra Internet).
+    -   Application Load Balancer (ALB): entry point cho tất cả API từ Amplify vào EC2.
+    -   Gateway Endpoint (S3, DynamoDB) và Interface Endpoint (Textract, Bedrock, SQS – nếu dùng) để EC2 gọi dịch vụ AWS mà không cần NAT Gateway.
+-   **Amazon CloudWatch + Amazon SNS**:
+    -   Thu thập log và metrics từ EC2, ALB, SQS.
+    -   CloudWatch Alarms gửi cảnh báo qua SNS khi CPU cao, SQS backlog, lỗi worker, v.v.
+-   **AWS CodePipeline / CodeBuild**: Tự động build & deploy backend (FastAPI trên EC2).
 
-- Người dùng: Sinh viên, giảng viên, và nhà nghiên cứu.
-- Xử lý tài liệu: PDF/DOCX được upload lên S3 và xử lý bởi Textract.
-- Lập chỉ mục: Kendra/OpenSearch phân tích và tạo embedding vector.
-- Hội thoại AI: Bedrock (Claude 3.5 Sonnet) sử dụng RAG để sinh câu trả lời.
-- Quản lý người dùng: Cognito xác thực và phân quyền truy cập.
-- Phân tích dữ liệu: QuickSight tổng hợp hành vi học tập và tài liệu phổ biến.  
+#### Thiết kế thành phần
+
+-   **Người dùng**:
+    -   **Researchers**: hỏi – đáp, tra cứu nội dung học thuật.
+    -   **Dev/Admin**: upload, quản lý và re-index tài liệu.
+-   **Xử lý tài liệu (IDP)**:
+    -   PDF được Dev/Admin upload lên S3.
+    -   Worker trên EC2 gọi Textract để OCR và trích xuất text/bảng.
+-   **Lập chỉ mục (Indexing & Vector DB)**:
+    -   Worker chuẩn hoá, chia chunk nội dung.
+    -   Gọi Bedrock Titan Embeddings v2 tạo embedding.
+    -   Lưu embedding + metadata vào Qdrant trên EC2.
+-   **Hội thoại AI (RAG)**:
+    -   FastAPI embed câu hỏi, truy vấn Qdrant lấy top-k đoạn liên quan.
+    -   Gửi context + câu hỏi vào Claude 3.5 Sonnet (Bedrock) để sinh câu trả lời kèm citation.
+-   **Quản lý người dùng**:
+    -   Cognito xác thực và phân quyền researcher / admin.
+-   **Lưu trữ & trạng thái**:
+    -   DynamoDB lưu metadata tài liệu (doc_id, status, owner, …) và (tuỳ chọn) lịch sử chat.
 
 ### 4. Triển khai kỹ thuật  
 *Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+Dự án gồm 2 phần chính — nền tảng web (UI + auth) và backend RAG + IDP — triển khai qua 4 giai đoạn:
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+- **Nghiên cứu & chốt kiến trúc**:
+    - Rà soát yêu cầu (50 researcher, 1 EC2, IDP + RAG).
+    - Chốt kiến trúc VPC, EC2 (FastAPI + Qdrant + Worker), Amplify, Cognito, S3, SQS, DynamoDB, Textract, Bedrock.
 
+- **POC & kiểm tra kết nối**:
+    - Tạo EC2, VPC endpoints, thử gọi Textract, Titan Embeddings, Claude 3.5 Sonnet.
+    - Chạy Qdrant đơn giản trên EC2, test insert/search vector.
+    - Tạo skeleton FastAPI + một màn hình Chat UI tối giản trên Amplify.
+
+- **Hoàn thiện tính năng chính**:
+    - Xây /api/chat (FastAPI) + RAG pipeline: embed query → Qdrant → Claude + citation.
+    - Xây /api/admin/: upload PDF, lưu S3 + DynamoDB, đưa message vào SQS.
+    - Viết Worker trên EC2: SQS → Textract → normalize/chunk → Titan → Qdrant → update DynamoDB.
+    - Hoàn thiện Chat UI và Admin UI (upload + xem trạng thái tài liệu).
+
+- **Kiểm thử, tối ưu, triển khai demo nội bộ**:
+    - Test end-to-end với một tập ~50–100 paper.
+    - Thêm CloudWatch Logs/Alarms, SNS notify khi lỗi hoặc queue backlog.
+    - Điều chỉnh cấu hình EC2, Qdrant, batch size để tối ưu thời gian và chi phí.
+    - Chuẩn bị tài liệu hướng dẫn sử dụng và demo cho nhóm 50 researcher.
+
+#### Yêu cầu kỹ thuật
+
+- **Frontend & Auth**:
+    - React/Next.js host trên AWS Amplify, CDN CloudFront, DNS Route 53.
+    - Amazon Cognito quản lý định danh và phân quyền (Researcher/Admin).
+
+- **Backend & Compute**:
+    - EC2 t3.small (Private Subnet) chạy All-in-one: FastAPI, Qdrant Vector DB và Worker.
+    - Xử lý bất đồng bộ: Worker đọc SQS, kích hoạt Textract và Bedrock để index dữ liệu.
+
+- **IDP & RAG**:
+    - **Lưu trữ**: S3 (File gốc), DynamoDB (Metadata & Trạng thái).
+    - **AI Core**: Textract (OCR tài liệu scan), Bedrock Titan (Embedding), Claude 3.5 Sonnet (Trả lời câu hỏi).
+
+- **Mạng & Observability**:
+    - **Network**: VPC Private Subnet, VPC Endpoints để kết nối bảo mật tới AWS Services.
+    - **Monitoring**: CloudWatch Logs/Metrics + SNS cảnh báo sự cố (CPU cao, lỗi Worker).
 ### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+Dự án được thực hiện trong 3 tháng với các giai đoạn cụ thể:
+
+- **Tháng 1: Nền tảng & Chuẩn bị**
+    - Ôn tập kiến thức AWS cốt lõi (VPC, IAM, S3, DynamoDB, SQS, EC2).
+    - Nghiên cứu sâu các dịch vụ AI: Amazon Bedrock, Textract.
+
+- **Tháng 2: Thiết kế & POC (Proof of Concept)**
+    - Chốt kiến trúc hệ thống và luồng dữ liệu RAG/IDP.
+    - Thiết lập hạ tầng cơ bản: VPC, EC2, Amplify, Cognito.
+    - Xây dựng tính năng Chat RAG cơ bản (FastAPI + Qdrant + Claude) để kiểm chứng giải pháp.
+
+- **Tháng 3: Triển khai, Kiểm thử & Vận hành**
+    - Hoàn thiện luồng xử lý tài liệu tự động (Worker + Textract).
+    - Xây dựng đầy đủ UI/UX cho Admin và Researcher.
+    - Kiểm thử tải, tối ưu hóa chi phí và triển khai chính thức cho nhóm người dùng nội bộ.  
 
 ### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+<!-- Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
+Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).   -->
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+*Chi phí hạ tầng (ước tính theo tháng)*
+- **Hạ tầng cố định (~40–45 USD)**:
+    - **Compute & Network**: EC2 t3.small (~15 USD) + VPC Endpoints (~20 USD).
+    - **Storage & Web**: S3, DynamoDB, SQS, Amplify, CloudWatch (~5–10 USD).
+- **Chi phí AI (Biến đổi)**:
+    - **Amazon Textract**: ~15–25 USD (xử lý batch 10.000 trang đầu).
+    - **Amazon Bedrock**: ~5–15 USD (phục vụ 50 users).
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+*Tổng cộng*: **~50–60 USD/tháng** cho môi trường nghiên cứu nội bộ.  
 
 ### 7. Đánh giá rủi ro  
 *Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+- **Hallucination (AI bịa đặt)**: Ảnh hưởng cao, xác suất trung bình.
+- **Vượt ngân sách (AI Services)**: Ảnh hưởng trung bình, xác suất trung bình.
+- **Sự cố hạ tầng (EC2/Qdrant)**: Ảnh hưởng cao, xác suất thấp.
 
 *Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+- **Chất lượng AI**: Bắt buộc trích dẫn nguồn (citation), giới hạn context đầu vào từ Qdrant.
+- **Chi phí**: Thiết lập AWS Budgets/Alarms, kiểm soát số lượng tài liệu ingest.
+- **Hạ tầng & Bảo mật**: Backup EBS định kỳ, mã hóa dữ liệu (S3/DynamoDB), phân quyền chặt chẽ qua Cognito/IAM.
 
 *Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+- **Sự cố hệ thống**: Khôi phục từ Snapshot, tạm dừng ingestion (buffer qua SQS).
+- **Vượt chi phí**: Tạm khóa tính năng upload mới, giới hạn hạn ngạch truy vấn trong ngày.
 
 ### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+*Cải tiến kỹ thuật*  
+- Chuyển đổi kho tài liệu rời rạc (PDF/Scan) thành tri thức số có thể truy vấn và trích dẫn tự động.
+- Giảm đáng kể thời gian tra cứu thủ công nhờ công nghệ RAG + IDP.
+
+*Giá trị dài hạn*  
+- Xây dựng nền tảng nghiên cứu số hóa cho 50+ researcher, dễ dàng mở rộng quy mô.
+- Tạo tiền đề phát triển các tính năng nâng cao: Gợi ý tài liệu, phân tích xu hướng nghiên cứu và hỗ trợ viết tổng quan (Literature Review).
