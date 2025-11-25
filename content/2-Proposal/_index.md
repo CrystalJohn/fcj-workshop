@@ -139,18 +139,25 @@ The project consists of 2 main parts — web platform (UI + auth) and RAG + IDP 
     -   **Monitoring:** CloudWatch Logs/Metrics + SNS alerts (High CPU, Worker errors).
 
 #### 5. Timeline & Milestones
-The project is executed over 3 months with specific phases:
--   **Month 1: Foundation & Preparation**
-    -   Review core AWS knowledge (VPC, IAM, S3, DynamoDB, SQS, EC2).
-    -   Deep dive into AI services: Amazon Bedrock, Textract.
--   **Month 2: Design & POC (Proof of Concept)**
-    -   Finalize system architecture and RAG/IDP data flow.
-    -   Setup basic infrastructure: VPC, EC2, Amplify, Cognito.
-    -   Build basic RAG Chat feature (FastAPI + Qdrant + Claude) to validate solution.
--   **Month 3: Deployment, Testing & Operations**
-    -   Complete automated document processing flow (Worker + Textract).
-    -   Build full UI/UX for Admin and Researcher.
-    -   Load test, optimize costs, and officially deploy for internal user group.
+The project is executed over approximately 6 weeks with specific phases:
+-   **Week 1-2 (Days 1-10): Research & Design**
+    -   Detailed architecture design, scope definition, service selection. Planning for operational cost optimization and deployment.
+-   **Week 3 (Days 11-15): AWS Infrastructure Setup**
+    -   Configure VPC, Subnets, Security Groups, IAM Roles.
+    -   Deploy EC2 t3.small, S3 bucket, DynamoDB tables.
+    -   Setup VPC Endpoints (Gateway + Interface).
+-   **Week 4 (Days 16-20): Backend APIs & IDP Pipeline**
+    -   Build FastAPI endpoints (`/api/chat`, `/api/admin/upload`).
+    -   Integrate IDP pipeline: SQS → Worker → Textract → Embeddings → Qdrant.
+    -   Connect Bedrock (Titan Embeddings + Claude 3.5 Sonnet).
+-   **Week 5 (Days 21-25): Testing & Error Handling**
+    -   End-to-end testing with a set of ~50-100 papers.
+    -   Handle edge cases, retry logic, error handling.
+    -   Optimize chunking strategy and retrieval accuracy.
+-   **Week 6 (Days 26-30): Deployment & Documentation**
+    -   Finalize UI/UX for Admin and Researcher.
+    -   Setup CloudWatch Alarms + SNS notifications.
+    -   Prepare user guide and demo for the group of 50 researchers.
 
 #### 6. Budget Estimation
 You can view costs on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)

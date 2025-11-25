@@ -124,20 +124,22 @@ Dự án gồm 2 phần chính — nền tảng web (UI + auth) và backend RAG 
     - **Network**: VPC Private Subnet, VPC Endpoints để kết nối bảo mật tới AWS Services.
     - **Monitoring**: CloudWatch Logs/Metrics + SNS cảnh báo sự cố (CPU cao, lỗi Worker).
 #### 5. Lộ trình & Mốc triển khai  
-Dự án được thực hiện trong **20 ngày** (4 tuần) với các giai đoạn cụ thể:
-- **Tuần 1 (Ngày 1-5): Thiết lập hạ tầng AWS**
+Dự án được thực hiện trong khoảng 6 tuần với các giai đoạn cụ thể:
+- **Tuần 1-2 (Ngày 1-10): Nghiên cứu & Thiết kế**
+    - Thiết kế kiến trúc chi tiết, xác định scope, dịch vụ sử dụng. Lên kế hoạch tối ưu chi phí vận hành và triển khai.
+- **Tuần 3 (Ngày 11-15): Thiết lập hạ tầng AWS**
     - Cấu hình VPC, Subnets, Security Groups, IAM Roles.
     - Triển khai EC2 t3.small, S3 bucket, DynamoDB tables.
     - Thiết lập VPC Endpoints (Gateway + Interface).
-- **Tuần 2 (Ngày 6-10): Backend APIs & IDP Pipeline**
+- **Tuần 4 (Ngày 16-20): Backend APIs & IDP Pipeline**
     - Xây dựng FastAPI endpoints (`/api/chat`, `/api/admin/upload`).
     - Tích hợp IDP pipeline: SQS → Worker → Textract → Embeddings → Qdrant.
     - Kết nối Bedrock (Titan Embeddings + Claude 3.5 Sonnet).
-- **Tuần 3 (Ngày 11-15): Testing & Error Handling**
+- **Tuần 5 (Ngày 21-25): Testing & Error Handling**
     - Kiểm thử end-to-end với tập ~50-100 papers.
     - Xử lý edge cases, retry logic, error handling.
     - Tối ưu chunking strategy và retrieval accuracy.
-- **Tuần 4 (Ngày 16-20): Deployment & Documentation**
+- **Tuần 6 (Ngày 26-30): Deployment & Documentation**
     - Hoàn thiện UI/UX cho Admin và Researcher.
     - Thiết lập CloudWatch Alarms + SNS notifications.
     - Chuẩn bị tài liệu hướng dẫn và demo cho nhóm 50 researcher.  
