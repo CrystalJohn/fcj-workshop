@@ -15,7 +15,7 @@ pre: " <b> 2. </b> "
 **Key Highlights:**
 - **Core Technology**: Combines **IDP** (Amazon Textract) to process documents (including scans) and **RAG** (Amazon Bedrock - Claude 3.5 Sonnet) to generate intelligent responses.
 - **Optimized Architecture**: Hybrid model using 1 EC2 t3.small combined with Serverless services (Amplify, Cognito, S3, DynamoDB) to balance performance and cost.
-- **Feasibility**: Serves ~50 internal users with operating costs **~$60/month**, fast deployment time (20 days), and maximizes AWS Free Tier.
+- **Feasibility**: Serves ~50 internal users with operating costs ~$60/month, fast deployment time (20 days), and maximizes AWS Free Tier.
 
 #### 2. Problem Statement
 
