@@ -1,126 +1,95 @@
 ---
 title: "Event 1"
-date: "`r Sys.Date()`"
+date: "2025-1205"
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Report: “BUILDING AGENTIC AI”
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+### Event Purpose
 
-### Event Objectives
-
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Optimize context handling with Amazon Bedrock
+- Build AI agent automation using Amazon Bedrock through practical techniques and real-world use cases
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Nguyen Gia Hung** — Head of Solutions Architect, AWS
+- **Kien Nguyen** — Solutions Architect, AWS
+- **Viet Pham** — Founder & CEO, Diagflow
+- **Kha Van** — Community Leader, AWS
+- **Thang Ton** — Co-Founder & COO, Cloud Thinker
+- **Henry Bui** — Head of Engineering, Cloud Thinker
 
-### Key Highlights
+### Key Content
 
-#### Identifying the drawbacks of legacy application architecture
+#### Cost and performance optimization techniques for AI agent systems
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+- Long product release cycles → lost revenue / missed opportunities
+- Inefficient operations → lower productivity, higher cost
+- Non-compliance with security regulations → security incidents, reputational loss
 
-#### Transitioning to modern application architecture – Microservices
+#### Four "Quick Win" techniques for optimization
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+#### Prompt Caching
+This was highlighted as the most important technique — it can reduce costs by 70–90% and speed up processing.
+Context structure: split the context window into three parts: (1) System & Tool Schema, (2) Conversation History, and (3) Objective Prompt.
+Common mistake: many teams only cache the System Prompt and Tool Schema, but Conversation History is often the most expensive part (80–90% of cost) and is neglected.
+Correct strategy: place checkpoints so the entire conversation history can be cached. The first run (cache write) may add ~25% extra cost, but subsequent runs save ~90%.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+#### Context Compaction (Summarization)
 
-#### Domain-Driven Design (DDD)
+Cloud Thinker presented an intelligent summarization pattern to avoid losing cache hits.
+Old approach: create a new agent to summarize past conversation — this invalidates the previous cache and often degrades quality.
+New approach (Cloud Thinker technique): keep the same agent and cached history, but swap the Objective Prompt to a task like "summarize this conversation." This leverages cache hits, reduces summarization cost from ~$0.30 to ~$0.03 (≈90% savings) and improves output quality.
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+#### Tool Consolidation
 
-#### Event-Driven Architecture
+Problems with protocols like MCP (Model Context Protocol) arise when too many tools (e.g., 50 tools) are injected into context, causing context flooding.
+Solution: instead of embedding full complex schemas in the prompt, use a lightweight dictionary and consolidate instructions.
+Just-in-time instruction: agents can request detailed tool usage instructions only when needed (e.g., via a `get instruction` call), reducing tokens sent in each request.
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+#### Parallel Tool Calling
 
-#### Compute Evolution
+Modern models allow calling multiple tools in parallel (instead of the older sequential ReAct pattern), saving time. This often requires explicit instructions (e.g., "maximize efficiency") to force parallel execution.
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+### What I Learned
 
-#### Amazon Q Developer
+#### Cost management strategies
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+- Input cost is a major part of operating AI agents in loops because each loop may re-send conversation history and system prompts. Longer histories increase input tokens and cost.
+- Solution: use Prompt Caching and checkpointing to cut costs by up to 80–90%.
 
-### Key Takeaways
+#### Smart Summarization techniques
 
-#### Design Mindset
+- Keep the same agent and cached history to preserve cache hits and quality.
+- This approach reduced summarization cost from $0.30 to $0.03 in practice and produced better outputs.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+#### Tool Design: Avoid context flooding
 
-#### Technical Architecture
+- Problem: injecting too many tools (e.g., MCP with 50 tools) floods the context.
+- Fix: provide a special instruction for agents to fetch detailed tool instructions on demand instead of embedding full schemas.
+- Benefits: smaller context, lower token usage, better efficiency.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+### Performance optimization: enforce Parallel Tool Calling
 
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- Add explicit instructions to prompts so the model runs tasks in parallel and maximizes efficiency.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending the **"Building Agentic AI"** workshop was an engaging technical experience that broadened my understanding of agent design and prompt engineering. Notable experiences included:
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Learning from expert speakers
+- Speakers from AWS, Cloud Thinker, and Diagflow shared practical best practices for designing modern agent-based applications.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### Hands-on technical exercises
+- Participated in a CloudThinker hackathon focused on optimizing systems for cost and performance using CloudThinker tools.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Exploring modern tools
+- Hands-on exposure to CloudThinker and practical demonstrations of how to apply these techniques.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+#### Event photos
+![Event photo](/images/4-EventParticipated/5.12-event.jpg)
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> Overall, the event not only delivered technical knowledge but also shifted my thinking about application design, agent workflows, and prompt optimization to achieve better results.
