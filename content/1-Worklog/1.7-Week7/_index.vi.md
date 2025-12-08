@@ -14,7 +14,7 @@ pre: " <b> 1.7. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 20/10/2025   | 20/10/2025      |
+| 2   | - Học về Qdrant EC2                                                                                             | 20/10/2025   | 20/10/2025      |  <https://aws.amazon.com/marketplace/pp/prodview-rtphb42tydtzg>
 | 3   | - Học về cách setup với Amazon Bedrock APIs                                                                                                                                                 | 21/10/2025   | 21/10/2025      | <https://github.com/aws-samples/amazon-bedrock-samples/tree/main/introduction-to-bedrock/bedrock_apis> |
 | 4   | - Tạo domain SageMaker để test Amazon Bedrock trong SageMaker <br> - Setup Bedrock và prompt với model Claude 3.5 Sonet <br> - Cách làm việc với Amazon Bedrock APIs                        | 22/10/2025   | 22/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | 5   | - **Thực hành:** <br>&emsp; Cài đặt Bedrock <br>&emsp; Claude 3.5 Sonnet <br>&emsp; Gọi API cơ bản <br>&emsp; Xử lý hàng loạt <br>&emsp; Kỹ thuật viết prompt <br>&emsp; Xử lý giới hạn tốc độ | 23/10/2025   | 23/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
@@ -23,33 +23,30 @@ pre: " <b> 1.7. </b> "
 
 ### Kết quả đạt được tuần 7:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+- Biết được Qdrant trên EC2 chính là vector database. Với EC2 tức là bạn tự host Qdrant trên EC2.
+- Qdrant trên EC2 là giải pháp vector DB tự quản lý, dùng để lưu và tìm kiếm embedding (vector) trong hệ thống RAG.
+Nó thay thế các dịch vụ đắt tiền như OpenSearch Serverless (~$90–150/tháng).
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+- Qdrant được dùng để 
+  - Lưu embedding từ Titan Text Embeddings v2, sau khi bạn chunk tài liệu PDF/OCR
+  - Tìm top-K vectors cho mỗi truy vấn → feed cho Claude Sonnet để RAG
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+- Thực hành tạo domain SageMaker và kiểm thử kết nối tới Amazon Bedrock
+  - Đã tạo được domain đơn giản trên SageMaker để thử nghiệm gọi Bedrock APIs từ môi trường notebook.
+  - Xác nhận flow: gửi prompt → nhận response từ Claude 3.5 Sonnet.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+- Triển khai và gọi thử Amazon Bedrock APIs
+  - Viết script mẫu để gọi API (sync/async), kiểm tra giới hạn tần suất và xử lý lỗi (retry/backoff).
+  - Thử nghiệm batch processing: gửi nhiều prompt/embedding jobs và quan sát quota/rate limits.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+- Kiến thức bảo mật & hạ tầng
+  - Tìm hiểu nhanh AWS Organizations và IAM role để quản lý tài khoản và quyền truy cập dịch vụ Bedrock/Textract.
+  - Làm quen với Amazon Macie (data classification) và ý nghĩa của Direct Connect trong kịch bản kết nối on-prem.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+- Bài học thực tế & bước tiếp theo
+  - Nắm rõ flow end-to-end: Upload PDF → SQS message → EC2 Worker (Textract → chunk → Titan Embeddings) → index vào Qdrant → RAG với Claude Sonnet.
+  - Kế hoạch tiếp theo: triển khai worker mẫu trên EC2 để tự động hoá ingest, test performance và tối ưu batch size/throughput.
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+
 
 
