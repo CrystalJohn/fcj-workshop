@@ -9,47 +9,36 @@ pre: " <b> 1.10. </b> "
 
 ### Mục tiêu tuần 10:
 
-* Triển khai được Terraform để tự động hóa việc tạo và quản lý tài nguyên AWS theo Architect ARC-Chatbot.
+* Setup AWS Account, IAM Users & Policies
+* Nghiên cứu Bedrock Claude 3.5 & Cohere Embed APIs
+* Nghiên cứu Textract AnalyzeDocument API
+* Thiết kế architecture
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Setup AWS Account <br> - Tạo IAM Users & Policies <br> - Cấu hình quyền truy cập cho các dịch vụ AI/ML                                                                                    | 10/11/2025   | 10/11/2025      | <https://docs.aws.amazon.com/IAM/>        |
+| 3   | - Nghiên cứu Amazon Bedrock <br> - Tìm hiểu Claude 3.5 model <br> - Tìm hiểu Cohere Embed APIs                                                                                              | 11/11/2025   | 11/11/2025      | <https://docs.aws.amazon.com/bedrock/>    |
+| 4   | - Viết sample code `test_bedrock.py` <br> - Test Claude 3.5 API calls <br> - Test Cohere Embedding                                                                                          | 12/11/2025   | 12/11/2025      | <https://docs.aws.amazon.com/bedrock/>    |
+| 5   | - Nghiên cứu Amazon Textract <br> - Tìm hiểu AnalyzeDocument API <br> - Viết sample code `test_textract.py`                                                                                 | 13/11/2025   | 13/11/2025      | <https://docs.aws.amazon.com/textract/>   |
+| 6   | - Thiết kế Architecture diagram <br> - Ước tính chi phí (~$65/month) <br> - Review và hoàn thiện tài liệu                                                                                   | 14/11/2025   | 14/11/2025      |                                           |
 
 
 ### Kết quả đạt được tuần 10:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **AWS Account Setup:**
+  * Tạo AWS Account 427995028618 với IAM users
+  * Cấu hình IAM Policies cho Bedrock, Textract
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* **Sample Code:**
+  * `test_bedrock.py` — test Claude 3.5 & Cohere Embed APIs
+  * `test_textract.py` — test AnalyzeDocument API
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* **Architecture:**
+  * Hoàn thành Architecture diagram cho ARC-Chatbot
+  * Xác định các dịch vụ cần sử dụng: Bedrock, Textract, S3, Lambda, ...
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* **Cost Estimation:**
+  * Ước tính chi phí khoảng ~$65/month cho môi trường dev/test
 
 
