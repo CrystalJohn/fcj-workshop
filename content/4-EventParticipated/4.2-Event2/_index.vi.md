@@ -157,7 +157,7 @@ Triển khai IaC (Terraform/CDK) để giảm drift.
 
 ### Trải nghiệm trong event
 
-- Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+- Tham gia workshop **“AWS Cloud Mastery Series #3”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
 
 #### Học hỏi từ các diễn giả có chuyên môn cao
 
@@ -186,5 +186,5 @@ Triển khai IaC (Terraform/CDK) để giảm drift.
 - Không thể vận hành cloud an toàn nếu thiếu IAM + Logging + IR
 
 #### Một số hình ảnh khi tham gia sự kiện
-![Sự kiện](/images/4-EventParticipated/29.11-event.jpg)
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+![Sự kiện](/images/4-EventParticipated/29.11(1).jpg)
+> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi hiểu rõ hơn về tư duy bảo mật hiện đại, tự động hóa quy trình bảo mật và cải thiện khả năng ứng phó sự cố trong môi trường cloud.

@@ -178,5 +178,5 @@ pre: " <b> 4.2. </b> "
 - Cannot operate cloud securely without IAM + Logging + IR  
 
 #### Some event photos
-![Event](/images/4-EventParticipated/29.11-event.jpg)
-> Overall, the event not only provided technical knowledge but also helped me change my thinking about application design, system modernization, and more effective cross-team collaboration.
+![Event](/images/4-EventParticipated/29.11(1).jpg)
+> Overall, the event not only provided technical knowledge but also helped me deepen my understanding of modern security mindset, automate security processes, and improve incident response capabilities in cloud environments.
