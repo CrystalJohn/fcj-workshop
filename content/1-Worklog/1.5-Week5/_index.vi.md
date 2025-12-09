@@ -9,7 +9,9 @@ pre: " <b> 1.5. </b> "
 
 ### Mục tiêu tuần 5:
 
-* 
+* Dịch các bài blog AWS theo sự phân công.
+* Tìm hiểu về Amazon RDS và các dịch vụ AWS cơ bản.
+* Thực hành tạo và quản lý EC2 instance.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
@@ -22,4 +24,10 @@ pre: " <b> 1.5. </b> "
 
 
 ### Kết quả đạt được tuần 5:
+
+* Hoàn thành dịch 3 bài blog AWS theo sự phân công.
+* Hiểu được các khái niệm cơ bản về Amazon RDS (Relational Database Service).
+* Tạo thành công AWS Free Tier account và cấu hình AWS CLI.
+* Nắm vững kiến thức EC2 cơ bản: Instance types, AMI, EBS, Elastic IP.
+* Thực hành thành công việc tạo EC2 instance, kết nối SSH và gắn EBS volume.
 
