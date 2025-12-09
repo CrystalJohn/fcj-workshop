@@ -6,31 +6,28 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-<!-- **Trong trang này** bạn sẽ cần giới thiệu worklog của bạn **như thế nào**? Bạn hoàn thành chương trình trong vòng **bao nhiêu tuần**? Bạn **đã làm gì** trong các tuần đó? -->
+Worklog được thực hiện trong 12 tuần thực tập tại First Cloud Journey, tập trung vào việc xây dựng **ARC-Chatbot** — một ứng dụng RAG Chatbot trên AWS.
 
-
-<!-- Thông thường và cũng là tiêu chuẩn, một worklog được thực hiện trong khoảng 3 tháng (trong suốt thời gian thực tập) với nội dung các tuần như sau: -->
-
-**Tuần 1:** [Làm quen với AWS và các dịch vụ cơ bản trong AWS](1.1-week1/)
+**Tuần 1:** [Làm quen với AWS và các dịch vụ cơ bản](1.1-week1/)
 
 **Tuần 2:** [Làm quen với AWS VPC và thực hành lab](1.2-week2/)
 
-**Tuần 3:** [Triển khai và cấu hình EC2 instance trong VPC Public/Private Subnet và Triển khai ứng dụng Node.js trên Amazon Linux](1.3-week3/)
+**Tuần 3:** [Triển khai EC2 instance trong VPC Public/Private Subnet](1.3-week3/)
 
 **Tuần 4:** [Triển khai ứng dụng trên Linux Instance](1.4-week4/)
 
-**Tuần 5:** [Làm công việc D...](1.5-week5/)
+**Tuần 5:** [Tìm hiểu S3, IAM và Security best practices](1.5-week5/)
 
-**Tuần 6:** [Làm công việc E...](1.6-week6/)
+**Tuần 6:** [Nghiên cứu Serverless: Lambda, API Gateway, DynamoDB](1.6-week6/)
 
-**Tuần 7:** [Làm công việc G...](1.7-week7/)
+**Tuần 7:** [Tìm hiểu Container: Docker, ECR, ECS](1.7-week7/)
 
-**Tuần 8:** [Làm công việc H...](1.8-week8/)
+**Tuần 8:** [Nghiên cứu AI/ML Services: Bedrock, Textract](1.8-week8/)
 
-**Tuần 9:** [Làm công việc I...](1.9-week9/)
+**Tuần 9:** [Thiết kế Architecture và lập kế hoạch dự án ARC-Chatbot](1.9-week9/)
 
-**Tuần 10:** [Làm công việc L...](1.10-week10/)
+**Tuần 10:** [Assessment (M0) — Setup AWS Account, Bedrock & Textract APIs, Architecture](1.10-week10/)
 
-**Tuần 11:** [Làm công việc M...](1.11-week11/)
+**Tuần 11:** [Setup Infrastructure (M0) & IDP Pipeline (M1) — S3, DynamoDB, Cognito, SQS, PDF Processing](1.11-week11/)
 
-**Tuần 12:** [Làm công việc N...](1.12-week12/)
+**Tuần 12:** [RAG Chat (M2) & Testing (M3) — Rate Limiting, Chat UI, Admin Dashboard](1.12-week12/)
