@@ -47,7 +47,7 @@ The system is designed following the **RAG (Retrieval-Augmented Generation)** mo
 
 ## Architecture
 
-![FCJ-MVP.ARC-Chatbot](/images/5-Workshop/5.1-Introduce/FCJ-MVP.ARC-Chatbot.png)
+![FCJ-MVP.ARC-Chatbot](/images/5-Workshop/1-introduction/FCJ-MVP.ARC-Chatbot.png)
 
 ## Key Technologies
 

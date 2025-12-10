@@ -47,7 +47,7 @@ Hệ thống được thiết kế theo mô hình **RAG (Retrieval-Augmented Gen
 
 ## Architect
 
-![FCJ-MVP.ARC-Chatbot](/images/5-Workshop/5.1-Introduce/FCJ-MVP.ARC-Chatbot.png)
+![FCJ-MVP.ARC-Chatbot](/images/5-Workshop/1-introduction/FCJ-MVP.ARC-Chatbot.png)
 
 ## Key Technologies
 
