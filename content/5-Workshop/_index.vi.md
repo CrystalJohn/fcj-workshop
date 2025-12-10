@@ -1,9 +1,9 @@
 ---
-title : "Giới thiệu"
+title : "Workshop"
 date :  "`r Sys.Date()`" 
-weight : 1
+weight : 5
 chapter : false
-pre : " <b> 5.1. </b> "
+pre : " <b> 5. </b> "
 ---
 
 #### Tổng quan
@@ -26,9 +26,15 @@ Sau khi hoàn thành workshop, bạn sẽ:
 
 #### Nội dung
 
-1. [Giới thiệu về workshop](5.1-workshop-overview)
-2. [Các bước chuẩn bị](5.2-prerequiste)
-3. [Tạo S3 VPC Endpoint](5.3-s3-vpc)
-4. [Tạo S3 On-Prem Access](5.4-s3-onprem)
-5. [Cấu hình Policy](5.5-policy)
-6. [Dọn dẹp tài nguyên](5.6-cleanup)
+1. [Giới thiệu](1-introduction/)
+2. [Các bước chuẩn bị](2-preparation/)
+3. [Kích hoạt Bedrock Models](3-bedrock-models/)
+4. [Cấu hình AWS CLI](4-aws-cli/)
+5. [Chuẩn bị Dữ liệu](5-data-preparation/)
+6. [Triển khai Infrastructure](6-infrastructure/)
+7. [Thiết lập Backend API](7-backend/)
+8. [Thiết lập IDP Pipeline](8-idp-pipeline/)
+9. [Thiết lập Frontend](9-frontend/)
+10. [Sử dụng Chatbot](10-using-chatbot/)
+11. [Sử dụng Admin Dashboard](11-admin-dashboard/)
+12. [Dọn dẹp Tài nguyên](12-cleanup/)

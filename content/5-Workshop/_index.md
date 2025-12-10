@@ -28,9 +28,15 @@ After completing this workshop, you will:
 
 #### Content
 
-1. [Workshop Overview](5.1-workshop-overview)
-2. [Prerequisites](5.2-prerequiste)
-3. [Create S3 VPC Endpoint](5.3-s3-vpc)
-4. [Create S3 On-Prem Access](5.4-s3-onprem)
-5. [Configure Policy](5.5-policy)
-6. [Clean up Resources](5.6-cleanup)
+1. [Introduction](1-introduction/)
+2. [Preparation](2-preparation/)
+3. [Activate Bedrock Models](3-bedrock-models/)
+4. [Configure AWS CLI](4-aws-cli/)
+5. [Data Preparation](5-data-preparation/)
+6. [Deploy Infrastructure](6-infrastructure/)
+7. [Setup Backend API](7-backend/)
+8. [Setup IDP Pipeline](8-idp-pipeline/)
+9. [Setup Frontend](9-frontend/)
+10. [Using Chatbot](10-using-chatbot/)
+11. [Using Admin Dashboard](11-admin-dashboard/)
+12. [Clean up Resources](12-cleanup/)

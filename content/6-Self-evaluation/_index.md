@@ -6,12 +6,8 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
-
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+During my internship at **AWS - Amazon Web Services** from **12/08/2025** to **12/11/2025**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
+I participated in the **ARC-Chatbot project - Academic Research Chatbot using Generative AI and RAG on AWS Serverless platform**, through which I improved my skills in **Python programming, system architecture design, using AWS services (Bedrock, Textract, S3, DynamoDB, Cognito), technical documentation writing, and teamwork**.  
 
 In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
 
@@ -20,11 +16,11 @@ To objectively reflect on my internship period, I would like to evaluate myself 
 | No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
 | --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
 | 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
+| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ✅    | ☐    | ☐       |
 | 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
 | 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
+| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ✅    | ☐       |
+| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ✅    | ☐    | ☐       |
 | 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
 | 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
 | 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
@@ -36,4 +32,4 @@ To objectively reflect on my internship period, I would like to evaluate myself 
 
 * Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
 * Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+* Enhance system architecture design skills to deliver more effective solutions that provide greater value to users
