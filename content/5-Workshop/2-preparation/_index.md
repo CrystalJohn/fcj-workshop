@@ -6,8 +6,6 @@ chapter : false
 pre : " <b> 2. </b> "
 ---
 
-# PREPARATION STEPS
-
 ## Prerequisites
 
 Requirements needed to complete this workshop:

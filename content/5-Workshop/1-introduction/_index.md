@@ -6,8 +6,6 @@ chapter : false
 pre : " <b> 1. </b> "
 ---
 
-# INTRODUCTION
-
 ## Problem Statement
 
 Traditional chatbot systems struggle without the ability to access specific information from internal documents, leading to inaccurate or irrelevant responses. This workshop solves this problem by building an architecture capable of:

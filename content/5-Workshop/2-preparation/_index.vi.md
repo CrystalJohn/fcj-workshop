@@ -6,8 +6,6 @@ chapter : false
 pre : " <b> 2. </b> "
 ---
 
-# CÁC BƯỚC CHUẨN BỊ
-
 ## Yêu cầu Tiên quyết
 
 Các yêu cầu cần có để thực hiện workshop này:

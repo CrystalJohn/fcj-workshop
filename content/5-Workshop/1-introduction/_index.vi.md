@@ -6,8 +6,6 @@ chapter : false
 pre : " <b> 1. </b> "
 ---
 
-# GIỚI THIỆU
-
 ## Tuyên bố vấn đề
 
 Các hệ thống chatbot truyền thống gặp khó khăn khi không có khả năng truy cập thông tin cụ thể từ tài liệu nội bộ, dẫn đến trả lời không chính xác hoặc không liên quan. Workshop này giải quyết vấn đề bằng cách xây dựng một kiến trúc có khả năng:
