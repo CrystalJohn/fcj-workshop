@@ -6,8 +6,6 @@ chapter : false
 pre : " <b> 3. </b> "
 ---
 
-## Activate Bedrock Models
-
 Before deploying the solution, you need to activate the necessary Amazon Bedrock models in your AWS account.
 
 ### Steps to Activate Models

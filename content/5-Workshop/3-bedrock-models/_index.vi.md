@@ -6,8 +6,6 @@ chapter : false
 pre : " <b> 3. </b> "
 ---
 
-## Kích hoạt Bedrock Models
-
 Trước khi triển khai giải pháp, bạn cần kích hoạt các mô hình Amazon Bedrock cần thiết trong tài khoản AWS của mình.
 
 ### Các bước Kích hoạt Mô hình
