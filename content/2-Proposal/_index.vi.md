@@ -190,3 +190,9 @@ Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.p
 *Giá trị dài hạn*  
 - Xây dựng nền tảng nghiên cứu số hóa cho 50+ researcher, dễ dàng mở rộng quy mô.
 - Tạo tiền đề phát triển các tính năng nâng cao: Gợi ý tài liệu, phân tích xu hướng nghiên cứu và hỗ trợ viết tổng quan (Literature Review).
+
+## Đính kèm
+
+Bạn có thể tải về bản đề xuất chi tiết của nhóm ARC tại đây:
+
+[Download Proposal of ARC Team.docx](/content/2-Proposal/Proposal%20of%20ARC%20Team.docx)

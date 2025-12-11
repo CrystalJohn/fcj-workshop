@@ -195,3 +195,11 @@ Or download the [Budget Estimation File](../attachments/budget_estimation.pdf).
 **Long-term Value**
 -   Build a digitized research platform for 50+ researchers, easily scalable.
 -   Create a foundation for advanced features: Document recommendations, research trend analysis, and Literature Review support.
+
+---
+
+## Attachment
+
+You can download the detailed ARC Team proposal here:
+
+[Download Proposal of ARC Team.docx](/content/2-Proposal/Proposal%20of%20ARC%20Team.docx)
